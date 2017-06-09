@@ -1,0 +1,31 @@
+<div class="wrapper">    
+    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate class="form-signin">
+        <h2>Login</h2>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" placeholder="Email Address" required />
+            <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" placeholder="Password" required />
+            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+        </div>
+        <div class="form-group">
+        <label class="checkbox">
+        <input type="checkbox" [(ngModel)]="model.rememberMe" name="rememberMe"> Remember me
+        </label>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Login</button>
+            <a [routerLink]="['/register']" class="btn btn-link">Register</a>
+        </div>
+    </form>
+
+<ul>
+ <li *ngFor="let row of rowdata">
+  <span>{{row.id}} </span><span>{{row.name}} </span><span>"{{row.gender}}"</span>
+ </li>
+
+</ul>
+</div>
